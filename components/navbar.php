@@ -11,23 +11,33 @@
 
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Travel</a>
+                    <a class="nav-link" href="travel.php">Travel</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="contact.php">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Information</a>
+                    <a class="nav-link" href="information.php">Information</a>
                 </li>
-				<?php session_start();if(isset($_SESSION['user_id'])):?>
+
+<?php session_start();if(isset($_SESSION['user_id'])):?>
 
                 <li class="nav-item dropdown" >
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="uploaded_media/<?php echo $_SESSION['user_id']?>.jpeg" alt="Avatar Logo" style="width:40px;" class="rounded-circle"> 
-                        <?php echo $_SESSION['user_name']?>
+
+                        <!-- Check if User have profile Picture ot not -->
+                        <?php if(file_exists("media/uploaded_media/profile_photos/".$_SESSION['user_id'].".jpg")): ?>
+                            <!-- If true, print his photo -->
+                            <img src="media/uploaded_media/profile_photos/<?php echo $_SESSION['user_id']?>.jpg" alt="" style="width:40px;" class="rounded-circle"> 
+                        <?php else: ?>
+                            <!-- If false, print default photo -->
+                            <img src="media/default/profile.jpg" alt="" style="width:40px;" class="rounded-circle"> 
+                        <?php endif; ?>
+                        
+                            <?php echo $_SESSION['user_name']?>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="profile.php">Profile</a></li>
@@ -36,7 +46,7 @@
                     </ul>
                 </li>
 
-                <?php else:?>
+<?php else:?>
                 
 				<form class="container-fluid justify-content-start">
 					<a href="login-register.php?case=login" style="text-decoration: none;">
@@ -46,9 +56,10 @@
 						<button class="btn btn-success me-2" type="button">Register</button>
 					</a>
                 </form>
-
-                <?php endif;?>
+<?php endif;?>
             </ul>
         </div>
     
     </nav>
+
+
