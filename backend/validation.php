@@ -28,6 +28,7 @@ function sanitizeString($value)
 function santEmail($email)
 {
     $email = trim($email);
+    $email = strtolower($email);
     $email = filter_var($email,FILTER_SANITIZE_EMAIL);
     return $email;
 }

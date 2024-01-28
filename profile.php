@@ -1,6 +1,6 @@
 <?php include("components/header.php")?>
 <?php include("components/navbar.php")?>
 
-<h1>travel.php</h1>
+<?php var_dump($_SESSION); ?>
 
 <?php include("components/footer.php")?>

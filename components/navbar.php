@@ -22,17 +22,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Information</a>
                 </li>
-				<?php if(isset($_SESSION['id'])):?>
+				<?php session_start();if(isset($_SESSION['user_id'])):?>
 
                 <li class="nav-item dropdown" >
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="uploaded_media/<?php echo $_SESSION['id']?>.jpeg" alt="Avatar Logo" style="width:40px;" class="rounded-circle"> 
-                        <?php $_SESSION['name']?>
+                        <img src="uploaded_media/<?php echo $_SESSION['user_id']?>.jpeg" alt="Avatar Logo" style="width:40px;" class="rounded-circle"> 
+                        <?php echo $_SESSION['user_name']?>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="profile.php">Profile</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">LogOut</a></li>
+                        <li><a class="dropdown-item" href="backend/logout.php">LogOut</a></li>
                     </ul>
                 </li>
 

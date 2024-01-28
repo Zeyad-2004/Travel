@@ -1,33 +1,51 @@
 <?php
-    function login_validation($email, $password)
-    {
-        $conn = mysqli_connect("localhost", "root", "", "travel");
-        $sql = "SELECT FROM `users` (`id`, `name`, `email`, `password`, `age`) WHERE `email` = '$email'";
+    class Database{
+        private $db_serverName = 'localhost';
+        private $db_userName = 'root';
+        private $db_password = '';
+        private $db_name = 'travel';
 
-        $result = mysqli_query($conn, $sql);
+        private $conn;
 
-        // End connection to database
-        mysqli_close($conn);
+        public function __construct(){
+            $this->conn = mysqli_connect($this->db_serverName, $this->db_userName, $this->db_password, $this->db_name);
+            
+            
+        }
+        public function insert($sql){
+            return (mysqli_query($this->conn,$sql))? true : false;
 
-        if ($result) {
-            $row = mysqli_fetch_assoc($result);
+        }
+        
+        public function select($sql){
+            $result= mysqli_query($this->conn, $sql);
 
-            if ($row['email'] === $email && $row['password'] === $password) {
-                session_start();
-                $_SESSION['user_id'] = $row['id'];
-                $_SESSION['user_name'] = $row['name'];
-                $_SESSION['user_email'] = $row['email'];
-                $_SESSION['user_age'] = $row['age'];
-
-                return true;
-            } else {
-                return "Incorrect email or password";
+            if($result){
+                $array = [];
+                while($row = mysqli_fetch_array($result)){
+                    array_push($array, $row);
+                }
+                return $array;
             }
-        } else {
-            return "Email not found, make sure about email";
+            else{
+                return false;
+            }
+        }
+        
+        public function update($sql){
+            return (mysqli_query($this->conn,$sql))? true : false;
+        }
+
+        public function delet($sql){
+            return (mysqli_query($this->conn,$sql))? true : false;
+        }
+
+
+        public function __destruct()
+        {
+            mysqli_close($this->conn);
         }
     }
-
     function registration_validation($name, $email, $password, $age)
     {
         $conn = mysqli_connect("localhost", "root", "", "travel");
