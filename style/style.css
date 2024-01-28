@@ -88,6 +88,7 @@ body{
 
 /* End Login Register */
 
+
 /* Start Carousel */
 .carousel-item {
     height: 32rem;
@@ -121,3 +122,82 @@ body{
     opacity: 0.8;
   }
 /* End Carousel */
+
+
+/* Start Profile */
+.profile{
+    display: flex;
+    position: relative;
+    /* background-color: #777; */
+
+    margin: 150px 100px 0px 100px;
+}
+.profile-photo{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    background-position: center;
+    background-size: cover;
+    
+    border-radius: 50%;
+}
+.change-profile-photo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    text-align: center;
+    background-color: #d8dadf;
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translate(-5px, -10px);
+
+}
+.profile-details{
+    height: 100%;
+    color: white;
+    padding: 40px 40px;
+}
+.profile-details h2{
+    color: #000;
+    font-weight: bold;
+}
+.profile-details h6{
+    color: #656565
+}
+.travel-history{
+    padding: 20px 100px;
+    margin-bottom: 100px;
+}
+.travel-history h1{
+    font-size: 54px;
+    font-weight: 600;
+    margin: 0 0 50px 60px;
+}
+.travel-table{
+    padding: 70px 50px;
+    border: solid 10px #dfdfdf;
+    border-radius: 5px;
+}
+.travel-table h1{
+    font-size: 54px;
+    font-weight: 600;
+    color: #b9b8b8;
+    text-align: center;
+}
+/* End Profile */
+
+
+
+
+
+
+.line{
+    border: solid 1px #b4b4b4;
+}
