@@ -35,6 +35,10 @@ body{
 
     border-bottom: solid 2px black;
 }
+.right-navbar .dropdown-menu li:last-child :hover{
+    background-color: red;
+    color: white;
+}
 /* End Navbar */
 
 /* Start Login Register */
@@ -62,11 +66,9 @@ body{
     font-weight: bold; 
 } 
   
-  
 .login-register input { 
     display: block; 
     width: 100%; 
-    margin-bottom: 15px; 
     padding: 10px; 
     box-sizing: border-box; 
     border: 1px solid #ddd; 
@@ -81,17 +83,26 @@ body{
     border: none; 
     color: white; 
     cursor: pointer; 
-    background-color: #4CAF50; 
+    background-color: #4cb150; 
     width: 100%; 
     font-size: 16px; 
+
+    transition-duration: 0.3s;
 } 
 
+.login-register .invalid-feedback{
+    text-align: left;
+}
+.login-register .submit-disabled{
+    cursor: not-allowed;
+    background-color: rgba(126, 200, 129, 0.788)
+}
 /* End Login Register */
 
 
 /* Start Carousel */
 .carousel-item {
-    height: 32rem;
+    height: 81vh;
     background: #000;
     color: #ffffff;
     position: relative;
@@ -99,7 +110,7 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
   }
-  .container {
+  .carousel-item .container {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -114,7 +125,7 @@ body{
     top: 0;
     background-position: center;
     background-size: cover;
-    opacity: 0.5;
+    opacity: 0.3;
 
     transition-duration: 0.5s;
   }

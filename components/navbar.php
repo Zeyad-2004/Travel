@@ -11,16 +11,16 @@
 
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                    <a id="navbar-home" class="nav-link active" aria-current="page" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="travel.php">Travel</a>
+                    <a id="navbar-travel" class="nav-link" href="travel.php">Travel</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.php">Contact</a>
+                    <a id="navbar-contact" class="nav-link" href="contact.php">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="information.php">Information</a>
+                    <a id="navbar-information" class="nav-link" href="information.php">Information</a>
                 </li>
 
 <?php session_start(); if(isset($_SESSION['user_id'])):?>

@@ -18,6 +18,7 @@ function requiredInput($value)
 function sanitizeString($value)
 {
     $str = trim($value);
+    $str = strtolower($str);
     $str = htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
     return $str;
 }

@@ -24,16 +24,16 @@
 
 
     <div class="profile">
-        <!-- Check if User have profile Picture ot not -->
-        <?php if (file_exists("media/uploaded_media/profile_photos/" . $_SESSION['user_id'] . ".jpg")) : ?>
+<!-- Check if User have profile Picture ot not -->
+<?php if (file_exists("media/uploaded_media/profile_photos/" . $_SESSION['user_id'] . ".jpg")) : ?>
             <!-- If true, print his photo -->
             <div class="profile-photo" style="background-image: url(media/uploaded_media/profile_photos/<?php echo $_SESSION['user_id'] ?>.jpg);">
 
-            <?php else : ?>
+<?php else : ?>
                 <!-- If false, print default photo -->
                 <div class="profile-photo" style="background-image: url(media/default/profile.jpg);">
 
-                <?php endif; ?>
+<?php endif; ?>
                 <form method="post">
                     <label for="upload_image">
                         <input type="file" name="image" class="image" id="upload_image" style="display:none" />
@@ -89,8 +89,8 @@
 
                 <div class="travel-table">
 
-                    <!-- TODO Handel Travels History -->
-                    <?php if (false) : ?>
+<!-- TODO Handel Travels History -->
+<?php if (false) : ?>
                         <table class="table table-striped">
                             <thead class="thead-light">
                                 <!-- TODO print travel history -->
@@ -111,82 +111,13 @@
                             </tbody>
                         </table>
 
-                    <?php else : ?>
+<?php else : ?>
                         <h1> No Previous Travels</h1>
-                    <?php endif; ?>
+
+<?php endif; ?>
                 </div>
             </div>
 
-            <script>
-                function closeModal() {
-                    $('#modal').modal('hide');
-                }
-            </script>
-
-            <script>
-                $(document).ready(function() {
-
-                    var $modal = $('#modal');
-
-                    var image = document.getElementById('sample_image');
-
-                    var cropper;
-
-                    $('#upload_image').change(function(event) {
-                        var files = event.target.files;
-
-                        var done = function(url) {
-                            image.src = url;
-                            $modal.modal('show');
-                        };
-
-                        if (files && files.length > 0) {
-                            reader = new FileReader();
-                            reader.onload = function(event) {
-                                done(reader.result);
-                            };
-                            reader.readAsDataURL(files[0]);
-                        }
-                    });
-
-                    $modal.on('shown.bs.modal', function() {
-                        cropper = new Cropper(image, {
-                            aspectRatio: 1,
-                            viewMode: 3,
-                            preview: '.preview'
-                        });
-                    }).on('hidden.bs.modal', function() {
-                        cropper.destroy();
-                        cropper = null;
-                    });
-
-                    $('#crop').click(function() {
-                        canvas = cropper.getCroppedCanvas({
-                            width: 400,
-                            height: 400
-                        });
-
-                        canvas.toBlob(function(blob) {
-                            url = URL.createObjectURL(blob);
-                            var reader = new FileReader();
-                            reader.readAsDataURL(blob);
-                            reader.onloadend = function() {
-                                var base64data = reader.result;
-                                $.ajax({
-                                    url: 'backend/upload.php',
-                                    method: 'POST',
-                                    data: {
-                                        image: base64data
-                                    },
-                                    success: function(data) {
-                                        location.reload(true);
-                                    }
-                                });
-                            };
-                        });
-                    });
-
-                });
-            </script>
+            <script src="js/profile.js"></script>
 
             <?php include("components/footer.php") ?>
