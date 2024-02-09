@@ -95,4 +95,6 @@
     <!-- /END THE FEATURETTES -->
 
 </div>
+
+<script src="js/home-page.js"></script>
 <?php include("components/footer.php") ?>
